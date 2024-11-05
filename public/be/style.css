@@ -1,0 +1,75 @@
+.bg-content {
+    background-color: #f4f6fb;
+}
+
+.bg-card {
+    background-color: #dee2ed !important;
+}
+
+.mx-20 {
+    margin: 0 20px;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.h-100px {
+    height: 100px !important;
+}
+
+.h-225px {
+    height: 225px !important;
+}
+
+.show-password {
+    position: absolute;
+    top: 40%;
+    right: 20px;
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.show-password-login {
+    top: 29% !important;
+    right: 15px !important;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    background: #5a6f85;
+    /* Blue track */
+    border-radius: 5px;
+    /* Rounded track */
+}
+
+.form-range::-moz-range-track {
+    background: #007bff;
+    /* Blue track */
+    border-radius: 5px;
+    /* Rounded track */
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.font-dm {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.fs-25 {
+    font-size: 25px;
+}
+
+.fs-30 {
+    font-size: 30px;
+}
