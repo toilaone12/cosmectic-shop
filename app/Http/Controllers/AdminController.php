@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Order;
-use App\Models\ProductColor;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -67,7 +66,6 @@ class AdminController extends Controller
     function dashboard()
     {
         $title = 'Trang chủ';
-        $totalProduct = ProductColor::all();
         $totalReview = Review::all();
         $totalPending = Order::where('status', 0)->get();
         $totalComplete = Order::where('status', 3)->get();
@@ -78,7 +76,7 @@ class AdminController extends Controller
         foreach ($orderComplete as $complete) {
             $totalOrderComplete += $complete->total;
         }
-        return view('admin.content', compact('title', 'totalProduct', 'totalOrder', 'totalOrderComplete', 'totalReview', 'totalPending', 'totalCancel', 'totalComplete'));
+        return view('admin.content', compact('title', 'totalOrder', 'totalOrderComplete', 'totalReview', 'totalPending', 'totalCancel', 'totalComplete'));
     }
     //dang xuat
     function logout()

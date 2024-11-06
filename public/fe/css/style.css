@@ -2745,6 +2745,11 @@ a:hover .card-body-account {
   margin-top: 15px;
 }
 
+.description-technical>p>img {
+  display: block;
+  margin: 0 auto;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

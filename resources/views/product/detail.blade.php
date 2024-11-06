@@ -9,8 +9,8 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     @php
-                        $thumbnails = explode('|',trim($product->thumbnail_path,'|'));
-                        $thumbnails = array_reverse($thumbnails);
+                    $thumbnails = explode('|',trim($product->thumbnail_path,'|'));
+                    $thumbnails = array_reverse($thumbnails);
                     @endphp
                     @foreach ($thumbnails as $thumbnail)
                     <div class="product-preview">
@@ -25,8 +25,8 @@
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     @php
-                        $thumbnails = explode('|',trim($product->thumbnail_path,'|'));
-                        $thumbnails = array_reverse($thumbnails);
+                    $thumbnails = explode('|',trim($product->thumbnail_path,'|'));
+                    $thumbnails = array_reverse($thumbnails);
                     @endphp
                     @foreach ($thumbnails as $thumbnail)
                     <div class="product-preview">
@@ -44,17 +44,17 @@
                     <div>
                         <div class="product-rating">
                             @for ($i = 0; $i < $avg; $i++)
-                            <i class="fa fa-star"></i>
-                            @endfor
-                            @for ($i = $avg; $i < 5; $i++)
-                            <i class="fa fa-star-o"></i>
-                            @endfor
+                                <i class="fa fa-star"></i>
+                                @endfor
+                                @for ($i = $avg; $i < 5; $i++)
+                                    <i class="fa fa-star-o"></i>
+                                    @endfor
                         </div>
                         <a class="review-link">{{$countRating}} đánh giá</a>
                     </div>
                     <div>
                         @php
-                            $priceAfter = intval($product->price) - (intval($product->price) * intval($product->discount) / 100);
+                        $priceAfter = intval($product->price) - (intval($product->price) * intval($product->discount) / 100);
                         @endphp
                         <h3 class="product-price">{{number_format($priceAfter,0,',','.')}} đ
                             @if ($product->discount)
@@ -66,35 +66,6 @@
                         @endif
                     </div>
                     <div class="fw-bolder">{!!$product->description!!}</div>
-                    <form class="add-cart-detail">
-                        <input type="hidden" name="id" value="{{$product->id_product}}">
-                        <div class="product-options">
-                            <label>
-                                Màu sắc
-                                <select class="input-select choose-detail-color" name="color">
-                                    @foreach ($arrColor as $color)
-                                    <option value="{{$color['id']}}" data-quantity="{{$color['quantity']}}">{{$color['name']}}</option>
-                                    @endforeach
-                                </select>
-                            </label>
-                            <span class="quantity-product-color">(Còn {{$arrColor[0]['quantity']}} sản phẩm)</span>
-                        </div>
-
-                        <div class="add-to-cart">
-                            <div class="qty-label">
-                                Số lượng đặt
-                                <div class="input-number ml-5">
-                                    <input type="number" name="quantity" value="1" min="1" max="{{$arrColor[0]['quantity']}}" class="text-center qty-input">
-                                    <span class="qty-detail-up qty-detail" data-type="up">+</span>
-                                    <span class="qty-detail-down qty-detail" data-type="down">-</span>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-15">
-                                <button type="submit" class="add-to-cart-btn mr-10"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
-                                <button class="add-to-cart-btn mt-xs-10 add-favourite" data-id="{{$product->id_product}}"><i class="fa fa-heart-o"></i>Yêu thích</button>
-                            </div>
-                        </div>
-                    </form>
 
                 </div>
             </div>
@@ -105,7 +76,7 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Thông số kỹ thuật</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
                         <li><a data-toggle="tab" href="#tab3">Đánh giá ({{$countRating}})</a></li>
                     </ul>
 
@@ -113,7 +84,7 @@
                         <!-- tab1  -->
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 description-technical">
                                     {!!$product->technical!!}
                                 </div>
                             </div>
@@ -127,11 +98,11 @@
                                             <span>{{$avg}}</span>
                                             <div class="rating-stars">
                                                 @for ($i = 0; $i < $avg; $i++)
-                                                <i class="fa fa-star"></i>
-                                                @endfor
-                                                @for ($i = $avg; $i < 5; $i++)
-                                                <i class="fa fa-star-o"></i>
-                                                @endfor
+                                                    <i class="fa fa-star"></i>
+                                                    @endfor
+                                                    @for ($i = $avg; $i < 5; $i++)
+                                                        <i class="fa fa-star-o"></i>
+                                                        @endfor
                                             </div>
                                         </div>
                                         <ul class="rating">
@@ -139,11 +110,11 @@
                                             <li>
                                                 <div class="rating-stars">
                                                     @for ($i = 0; $i < $key; $i++)
-                                                    <i class="fa fa-star"></i>
-                                                    @endfor
-                                                    @for ($i = $key; $i < 5; $i++)
-                                                    <i class="fa fa-star-o"></i>
-                                                    @endfor
+                                                        <i class="fa fa-star"></i>
+                                                        @endfor
+                                                        @for ($i = $key; $i < 5; $i++)
+                                                            <i class="fa fa-star-o"></i>
+                                                            @endfor
                                                 </div>
                                                 <div class="rating-progress">
                                                     <div style="width: {{$countRating ? round($rating / $countRating * 100) : 0}}%;"></div>
@@ -165,11 +136,11 @@
                                                     <p class="date">{{date('d m Y g:i A',strtotime($review->updated_at))}}</p>
                                                     <div class="review-rating">
                                                         @for ($i = 0; $i < $review->rating; $i++)
-                                                        <i class="fa fa-star"></i>
-                                                        @endfor
-                                                        @for ($i = $review->rating; $i < 5; $i++)
-                                                        <i class="fa fa-star-o empty"></i>
-                                                        @endfor
+                                                            <i class="fa fa-star"></i>
+                                                            @endfor
+                                                            @for ($i = $review->rating; $i < 5; $i++)
+                                                                <i class="fa fa-star-o empty"></i>
+                                                                @endfor
                                                     </div>
                                                 </div>
                                                 <div class="review-body">
@@ -177,14 +148,14 @@
                                                 </div>
                                             </li>
                                             @php
-                                                if($key == 2) break;
+                                            if($key == 2) break;
                                             @endphp
                                             @endforeach
                                         </ul>
                                         <ul class="reviews-pagination cursor-pointer" data-page="1" data-max="{{ceil($countRating / 3)}}">
                                             @for ($i = 1; $i <= ceil($countRating / 3); $i++)
                                                 <li class="pagination" data-page="{{$i}}">{{$i}}</li>
-                                            @endfor
+                                                @endfor
                                         </ul>
                                     </div>
                                 </div>
@@ -192,12 +163,12 @@
                                 <div class="col-md-3">
                                     <h3 class="text-center">Đánh giá</h3>
                                     @php
-                                        use App\Models\Account;
-                                        $cookie = Cookie::get('id_customer');
+                                    use App\Models\Account;
+                                    $cookie = Cookie::get('id_customer');
                                     @endphp
                                     @if(isset($cookie) && $cookie)
                                     @php
-                                        $account = Account::find($cookie);
+                                    $account = Account::find($cookie);
                                     @endphp
                                     <div id="review-form">
                                         <form class="review-form">
@@ -244,7 +215,7 @@
             </div>
             @foreach ($productRelated as $product)
             @php
-                $priceAfter = intval($product['price']) - (intval($product['price']) * intval($product['discount']) / 100);
+            $priceAfter = intval($product['price']) - (intval($product['price']) * intval($product['discount']) / 100);
             @endphp
             <div class="col-md-3 col-xs-6">
                 <div class="product">

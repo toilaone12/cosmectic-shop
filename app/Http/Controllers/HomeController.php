@@ -7,7 +7,6 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Favourite;
 use App\Models\Product;
-use App\Models\ProductColor;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;

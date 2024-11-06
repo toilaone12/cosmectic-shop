@@ -10,9 +10,8 @@
             <li><a href="#"><i class="fa fa-dong-sign"></i> VND</a></li>
             <li>
                 @php
-                    use App\Models\Account;
-                    use App\Models\Color;
-                    $cookie = Cookie::get('id_customer');
+                use App\Models\Account;
+                $cookie = Cookie::get('id_customer');
                 @endphp
                 @if(isset($cookie) && $cookie)
                 @php
@@ -39,7 +38,7 @@
             <div class="col-md-3">
                 <div class="header-logo mt-15">
                     <a href="{{route('home.dashboard')}}" class="logo">
-                        <span class="fs-30 font-bungee">HQN Store</span>
+                        <img src="{{asset('fe/img/logo-home.png')}}" class="w-100" alt="">
                     </a>
                 </div>
             </div>
@@ -85,13 +84,12 @@
                             <div class="cart-list">
                                 @if ($count)
                                 @php
-                                    $total = 0;
+                                $total = 0;
                                 @endphp
                                 @foreach ($carts as $cart)
                                 @php
-                                    $color = Color::find($cart['id_color'])['name'];
-                                    $subtotal = $cart->price * $cart->quantity;
-                                    $total += $subtotal;
+                                $subtotal = $cart->price * $cart->quantity;
+                                $total += $subtotal;
                                 @endphp
                                 <div class="product-widget">
                                     <div class="product-img">
@@ -99,7 +97,7 @@
                                     </div>
                                     <div class="product-body">
                                         <h3 class="product-name"><a href="{{route('product.detail',['product'=>$cart->id_product])}}">{{$cart->name}}</a></h3>
-                                        <h4 class="product-price"><span class="qty">{{$cart->quantity}}x</span><span class="qty fw-bolder">{{$color}}</span>{{number_format($subtotal,0,',','.')}} đ</h4>
+                                        <h4 class="product-price d-flex justify-content-between"><span>Số lượng: {{$cart->quantity}}</span>{{number_format($subtotal,0,',','.')}} đ</h4>
                                     </div>
                                     <button class="delete delete-cart" data-id="{{$cart->id_cart}}"><i class="fa fa-close"></i></button>
                                 </div>

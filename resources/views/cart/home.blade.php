@@ -13,7 +13,6 @@
                                 <th>&nbsp;</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Màu</th>
                                 <th>Số lượng</th>
                                 <th>Giá</th>
                                 <th>Tổng tiền</th>
@@ -21,12 +20,12 @@
                         </thead>
                         <tbody>
                             @php
-                                $total = 0;
+                            $total = 0;
                             @endphp
                             @foreach ($carts as $cart)
                             @php
-                                $subtotal = $cart['price'] * $cart['quantity'];
-                                $total += $subtotal;
+                            $subtotal = $cart['price'] * $cart['quantity'];
+                            $total += $subtotal;
                             @endphp
                             <tr class="text-center cart-items" data-id="{{$cart['id_cart']}}">
                                 <td class="product-remove" data-id="{{$cart['id_cart']}}">
@@ -43,8 +42,6 @@
                                     <h4 class="mt-30">{{$cart['name']}}</h4>
                                 </td>
 
-                                <td><div style="margin-top: 29px">{{$cart['color']}}</div></td>
-
                                 <td class="quantity" width="125">
                                     <div class="input-number mt-20">
                                         <input type="number" name="quantity" value="{{$cart['quantity']}}" min="1" max="{{$cart['limit']}}" data-id="{{$cart['id_cart']}}" class="text-center qty-input-cart">
@@ -53,9 +50,13 @@
                                     </div>
                                 </td>
 
-                                <td><div style="margin-top: 29px"><span class="price-cart">{{number_format($cart['price'],0,',','.')}}</span> đ</div></td>
+                                <td>
+                                    <div style="margin-top: 29px"><span class="price-cart">{{number_format($cart['price'],0,',','.')}}</span> đ</div>
+                                </td>
 
-                                <td><div style="margin-top: 29px"><span class="total-cart">{{number_format($subtotal,0,',','.')}}</span> đ</div></td>
+                                <td>
+                                    <div style="margin-top: 29px"><span class="total-cart">{{number_format($subtotal,0,',','.')}}</span> đ</div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -69,7 +70,7 @@
                     <h4>Áp mã khuyến mãi</h4>
                     <div class="d-flex">
                         <input type="text" name="discount" required id="" class="form-control-cart">
-                        <a class="btn-discount-cart use-discount">  <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="btn-discount-cart use-discount"> <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="cart-total mt-20 mt-xs-20">
@@ -93,7 +94,7 @@
                     </p>
                 </div>
                 <div class="cart-btns">
-                    <a class="btn-checkout checkout cursor-pointer"><span class="mr-5">Mua hàng</span>  <i class="fa fa-arrow-circle-right"></i></a>
+                    <a class="btn-checkout checkout cursor-pointer"><span class="mr-5">Mua hàng</span> <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

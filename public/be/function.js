@@ -28,7 +28,7 @@ function postAjax(url, data, success, error, dataType = 'json', isFormData = 0) 
     });
 }
 
-function swalInfo(title,text,callback){
+function swalInfo(title, text, callback) {
     Swal.fire({
         title: title,
         text: text,
@@ -40,13 +40,13 @@ function swalInfo(title,text,callback){
         confirmButtonText: "Có",
         cancelButtonText: "Không",
     }).then((res) => {
-        if(res.isConfirmed){
+        if (res.isConfirmed) {
             callback(true);
         }
     });
 }
 
-function swalNoti(title,text,icon,textConfirm,callback){
+function swalNoti(title, text, icon, textConfirm, callback) {
     Swal.fire({
         title: title,
         text: text,
@@ -54,7 +54,7 @@ function swalNoti(title,text,icon,textConfirm,callback){
         showCloseButton: true,
         confirmButtonText: textConfirm,
     }).then((res) => {
-        if(res.isConfirmed){
+        if (res.isConfirmed) {
             callback(true);
         }
     });
@@ -68,28 +68,28 @@ function formatCurrency2(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function formCart(data){
+function formCart(data) {
     let html = ``;
     let total = 0;
-    data.carts.forEach(function(cart){
+    data.carts.forEach(function (cart) {
         let subtotal = cart.price * cart.quantity;
         total += subtotal;
         html +=
-        `<div class="product-widget">
+            `<div class="product-widget">
             <div class="product-img">
                 <img src="http://127.0.0.1:8000/${cart.image}" alt="">
             </div>
             <div class="product-body">
                 <h3 class="product-name"><a href="http://127.0.0.1:8000/home/product/detail?product=${cart.id_product}">${cart.name}</a></h3>
-                <h4 class="product-price"><span class="qty">${cart.quantity}x</span><span class="qty fw-bolder">${cart.color}</span>${formatCurrency(subtotal)}</h4>
+                <h4 class="product-price d-flex justify-content-between"><span>Số lượng: ${cart.quantity}</span>${formatCurrency(subtotal)}</h4>
             </div>
             <button class="delete delete-cart" data-id="${cart.id_cart}"><i class="fa fa-close"></i></button>
         </div>`;
     })
     $('.cart-list').html(html);
     $('#modal_all_box').modal('hide');
-    if(data.count == 1){
-        if(!data.isUpdate) { // them lan dau
+    if (data.count == 1) {
+        if (!data.isUpdate) { // them lan dau
             $('.dropdown-cart').append(`<div class="qty qty-cart">${data.count}</div>`)
             $('.cart-dropdown').append(`<div class="cart-summary">
                 <small class="count-cart">Đã có ${data.count} sản phẩm</small>
@@ -98,24 +98,24 @@ function formCart(data){
             <div class="cart-btns font-lalezar">
                 <a href="http://127.0.0.1:8000/home/cart">Xem giỏ hàng</a>
             </div>`)
-        }else{ //cap nhat so luong
+        } else { //cap nhat so luong
             $('.qty-cart').text(data.count);
             $('.count-cart').text(`Đã có ${data.count} sản phẩm`)
             $('.total-cart').text(`Tổng tiền: ${formatCurrency(total)}`)
         }
-    }else{ //cap nhat so luong
+    } else { //cap nhat so luong
         $('.qty-cart').text(data.count);
         $('.count-cart').text(`Đã có ${data.count} sản phẩm`)
         $('.total-cart').text(`Tổng tiền: ${formatCurrency(total)}`)
     }
 }
 
-function formListSearchAddress(data){
+function formListSearchAddress(data) {
     let html = ``;
     let length = data.length > 10 ? 10 : data.length;
     for (let i = 0; i < length; i++) {
         html +=
-        `<div class="d-flex address-items" data-lat="${data[i].position.lat}" data-lng="${data[i].position.lng}">
+            `<div class="d-flex address-items" data-lat="${data[i].position.lat}" data-lng="${data[i].position.lng}">
             <i class="fa-solid fa-location-dot"></i>
             <span>${data[i].address.label}</span>
         </div>`

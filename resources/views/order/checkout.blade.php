@@ -82,17 +82,17 @@
                         </div>
                         <div class="order-products">
                             @php
-                                $total = 0;
-                                $subtotal = 0;
-                                $discount = empty($coupon) ? 0 : $coupon['discount'];
+                            $total = 0;
+                            $subtotal = 0;
+                            $discount = empty($coupon) ? 0 : $coupon['discount'];
                             @endphp
                             @foreach ($carts as $cart)
                             @php
-                                $subtotal = $cart['quantity'] * $cart['price'];
-                                $total += $subtotal;
+                            $subtotal = $cart['quantity'] * $cart['price'];
+                            $total += $subtotal;
                             @endphp
                             <div class="order-col">
-                                <div>{{$cart['quantity']}}x {{$cart['name']}} <br>(Màu: {{$cart['color']}})</div>
+                                <div>{{$cart['quantity']}}x {{$cart['name']}}</div>
                                 <div>{{number_format($subtotal,0,',','.')}} đ</div>
                             </div>
                             @endforeach
@@ -104,11 +104,11 @@
                         </div>
                         <div class="order-col">
                             <div>Phí vận chuyển</div>
-                            <div>+  <strong class="order-feeship">0</strong> đ</div>
+                            <div>+ <strong class="order-feeship">0</strong> đ</div>
                         </div>
                         <div class="order-col">
                             <div>Mã giảm giá</div>
-                            <div>-<strong class="order-coupon">{{number_format($discount,'0',',','.');}}</strong> đ</div>
+                            <div>- <strong class="order-coupon">{{number_format($discount,'0',',','.');}}</strong> đ</div>
                         </div>
                         <div class="order-col">
                             <div class="text-uppercase"><strong>Tổng tiền</strong></div>

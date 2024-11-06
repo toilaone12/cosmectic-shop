@@ -117,8 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn btn-open-modal" data-href="{{route('modal.color',['id' => $product['id']])}}"
-                                            data-bs-toggle="modal" data-bs-target="#modal_all_box"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+                                        <button class="add-to-cart-btn add-this-product" data-id="{{$product['id']}}"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
                                     </div>
                                 </div>
                                 @endforeach
