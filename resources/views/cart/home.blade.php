@@ -34,11 +34,11 @@
                                     </a>
                                 </td>
 
-                                <td width="200">
+                                <td width="150">
                                     <img src="{{asset($cart['image'])}}" alt="" width="100" height="80" class="img-fluid object-fit-cover">
                                 </td>
 
-                                <td>
+                                <td width="350">
                                     <h4 class="mt-30">{{$cart['name']}}</h4>
                                 </td>
 

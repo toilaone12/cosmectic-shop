@@ -2252,7 +2252,7 @@ textarea.input {
   object-fit: cover;
 }
 
-.h-50px {
+.h-80px {
   height: 50px;
 }
 
@@ -2741,6 +2741,10 @@ a:hover .card-body-account {
   font-size: 30px;
 }
 
+.fs-16 {
+  font-size: 16px;
+}
+
 .mt-15 {
   margin-top: 15px;
 }
@@ -2748,6 +2752,20 @@ a:hover .card-body-account {
 .description-technical>p>img {
   display: block;
   margin: 0 auto;
+}
+
+.description-technical>p>strong>img {
+  display: block;
+  margin: 0 auto;
+}
+
+.h-80px {
+  height: 80px !important;
+}
+
+.divide-detail-price {
+  border: 1px solid #ccc;
+  margin: 0 0 10px 0;
 }
 
 @keyframes spin {

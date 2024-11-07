@@ -27,11 +27,11 @@
                             <div class="d-flex align-items-baseline justify-content-between mb-15">
                                 <h3>Đơn hàng #{{$order->code}}</h3>
                                 @if ($order->status == 0 || $order->status == 1 || $order->status == 2)
-                                    <div class="badge fs-17 badge-warning">{{$order->status == 0 ? 'Đang chờ nhận đơn' : ($order->status == 1 ? 'Đã nhận đơn' : 'Đang giao đơn')}}</div>
+                                <div class="badge fs-17 badge-warning">{{$order->status == 0 ? 'Đang chờ nhận đơn' : ($order->status == 1 ? 'Đã nhận đơn' : 'Đang giao đơn')}}</div>
                                 @elseif ($order->status == 3)
-                                    <div class="badge fs-17 badge-success">Giao thành công</div>
+                                <div class="badge fs-17 badge-success">Giao thành công</div>
                                 @else
-                                    <div class="badge fs-17 badge-danger">Đã hủy đơn</div>
+                                <div class="badge fs-17 badge-danger">Đã hủy đơn</div>
                                 @endif
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-5">
@@ -55,10 +55,10 @@
                                 <p>Ghi chú: {{!$order->note ? 'Không có' : $order->note}}</p>
                             </div>
                             @php
-                                $url = !in_array($order->status,[2,3,4]) ? route('order.change',['id' => $order->id_order,'status' => 4]) : '#';
-                                $disabled = !in_array($order->status,[2,3,4]) ? '' : 'disabled';
+                            $url = !in_array($order->status,[2,3,4]) ? route('order.changeCustomer',['id' => $order->id_order,'status' => 4]) : '#';
+                            $disabled = !in_array($order->status,[2,3,4]) ? '' : 'disabled';
                             @endphp
-                            <a href="{{$url}}"  class="cancel-btn {{$disabled}}">Hủy đơn hàng</a>
+                            <a href="{{$url}}" class="cancel-btn {{$disabled}}">Hủy đơn hàng</a>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -71,20 +71,15 @@
                         <div class="coupon">
                             <div class="order-detail-item">
                                 <div class="order-detail-image">
-                                    <img src="{{asset($detail->image)}}" alt="" width="150" height="100" class="">
+                                    <img src="{{asset($detail->image)}}" alt="" width="150" height="139" class="">
                                 </div>
                                 <div class="order-detail-body ml-15">
-                                    <h3>{{$detail->name}}</h3>
+                                    <h4>{{$detail->name}}</h4>
                                     <div class="order-detail-price">
-                                        <span class="mr-5">x{{$detail->quantity}}</span>
-                                        <span class="mr-5">
-                                            @foreach ($colors as $color)
-                                                @if ($color->id_color == $detail->id_color)
-                                                {{$color->name}}
-                                                @endif
-                                            @endforeach
-                                        </span>
-                                        <span class="mr-5">{{number_format($detail->price,0,',','.')}}đ</span>
+                                        <p class="mr-5 fs-17">Thành tiền: {{number_format($detail->price,0,',','.')}}đ (1 sản phẩm)</p>
+                                        <p class="mr-5 fs-17">Số lượng: {{$detail->quantity}}</p>
+                                        <div class="divide-detail-price"></div>
+                                        <p class="mr-5 fs-17 text-danger">Tổng tiền: {{number_format($detail->price * $detail->quantity,0,',','.')}}đ</p>
                                     </div>
                                 </div>
                             </div>

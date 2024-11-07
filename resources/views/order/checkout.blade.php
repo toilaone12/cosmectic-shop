@@ -123,7 +123,7 @@
                                 Nhận tại cửa hàng
                             </label>
                             <div class="caption">
-                                <p class="fs-18">Địa chỉ: Thành phố Thái Nguyên</p>
+                                <p class="fs-18">Địa chỉ: Thành phố Hà Nội</p>
                             </div>
                         </div>
                         <div class="input-radio">

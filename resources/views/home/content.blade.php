@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="product-body font-lalezar">
-                                        <h3 class="product-name h-50px"><a href="{{route('product.detail',['product' => $product['id']])}}">{{$product['name']}}</a></h3>
+                                        <h3 class="product-name h-80px"><a href="{{route('product.detail',['product' => $product['id']])}}">{{$product['name']}}</a></h3>
                                         <h4 class="product-price">{{number_format($priceAfter,0,',','.')}} đ
                                             @if ($product['discount'])
                                             <del class="product-old-price">{{number_format($product["price"],0,",",".")}} đ</del>

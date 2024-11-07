@@ -3,8 +3,8 @@
     <div class="container">
         <ul class="header-links pull-left">
             <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-            <li><a href="#"><i class="fa fa-envelope-o"></i> quan@gmail.com</a></li>
-            <li><a href="#"><i class="fa fa-map-marker"></i> Thái Nguyên</a></li>
+            <li><a href="#"><i class="fa fa-envelope-o"></i> tam@gmail.com</a></li>
+            <li><a href="#"><i class="fa fa-map-marker"></i> Hà Nội</a></li>
         </ul>
         <ul class="header-links pull-right">
             <li><a href="#"><i class="fa fa-dong-sign"></i> VND</a></li>
@@ -36,7 +36,7 @@
         <div class="row">
             <!-- LOGO -->
             <div class="col-md-3">
-                <div class="header-logo mt-15">
+                <div class="header-logo">
                     <a href="{{route('home.dashboard')}}" class="logo">
                         <img src="{{asset('fe/img/logo-home.png')}}" class="w-100" alt="">
                     </a>

@@ -34,13 +34,12 @@ class OrderController extends Controller
         $id = $request->get('id');
         $order = Order::find($id);
         $details = DetailOrder::where('id_order', $id)->get();
-        $colors = Color::all();
         $listStatus = [
             1 => 'Nhận đơn hàng',
             2 => $order->payment != 'Thanh toán khi đến cửa hàng' ? 'Giao cho vận chuyển' : '',
             3 => 'Giao thành công',
         ];
-        return view('order.detail', compact('title', 'details', 'colors', 'order', 'listStatus'));
+        return view('order.detail', compact('title', 'details', 'order', 'listStatus'));
     }
 
     function change(Request $request)
@@ -50,6 +49,7 @@ class OrderController extends Controller
         $admin = isset($data['admin']) ? intval($data['admin']) : 0;
         $id = $data['id'];
         $order = Order::find($id);
+        // dd($status);
         if ($order->status + 2 == $status || $order->status + 1 == $status || $status == 4) {
             $order->status = $status;
             $order->date_updated = date('Y-m-d');
@@ -85,7 +85,6 @@ class OrderController extends Controller
         $id = $request->get('id');
         $order = Order::find($id);
         $details = DetailOrder::where('id_order', $id)->get();
-        $colors = Color::all();
         $title = 'Chi tiết đơn hàng #' . $order->code;
         $listParentCate = Category::where('id_parent', 0)->get();
         $listChildrenCate = Category::where('id_parent', '!=', 0)->get();
@@ -105,7 +104,7 @@ class OrderController extends Controller
                 $countWhiteList = count(explode('|', trim($whitelists->product_path, '|')));
             }
         }
-        return view('order.homeDetail', compact('order', 'details', 'colors', 'listParentCate', 'listChildrenCate', 'countWhiteList', 'carts', 'title', 'count'));
+        return view('order.homeDetail', compact('order', 'details', 'listParentCate', 'listChildrenCate', 'countWhiteList', 'carts', 'title', 'count'));
     }
     //gui gio hang sang dat hang
     function apply(Request $request)

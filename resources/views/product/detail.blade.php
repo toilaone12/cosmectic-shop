@@ -66,7 +66,24 @@
                         @endif
                     </div>
                     <div class="fw-bolder">{!!$product->description!!}</div>
+                    <form class="add-cart-detail">
+                        <input type="hidden" name="id" value="{{$product->id_product}}">
 
+                        <div class="add-to-cart">
+                            <div class="qty-label">
+                                Số lượng đặt
+                                <div class="input-number ml-5">
+                                    <input type="number" name="quantity" value="1" min="1" max="{{$product->quantity}}" class="text-center qty-input">
+                                    <span class="qty-detail-up qty-detail" data-type="up">+</span>
+                                    <span class="qty-detail-down qty-detail" data-type="down">-</span>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-15">
+                                <button type="submit" class="add-to-cart-btn mr-10"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                <button class="add-to-cart-btn mt-xs-10 add-favourite" data-id="{{$product->id_product}}"><i class="fa fa-heart-o"></i>Yêu thích</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /Product details -->
@@ -229,7 +246,7 @@
                         </div>
                     </div>
                     <div class="product-body font-lalezar">
-                        <h3 class="product-name h-50px"><a href="{{route('product.detail',['product' => $product->id_product])}}">{{$product->name}}</a></h3>
+                        <h3 class="product-name h-80px"><a href="{{route('product.detail',['product' => $product->id_product])}}">{{$product->name}}</a></h3>
                         <h4 class="product-price">{{number_format($priceAfter,0,',','.')}} đ
                             @if ($product->discount)
                             <del class="product-old-price">{{number_format($product->price,0,",",".")}} đ</del>
@@ -241,8 +258,8 @@
                         </div>
                     </div>
                     <div class="add-to-cart">
-                        <button class="add-to-cart-btn btn-open-modal" data-href="{{route('modal.color',['id' => $product->id_product])}}"
-                            data-bs-toggle="modal" data-bs-target="#modal_all_box"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+                        <button class="add-to-cart-btn add-this-product" data-id="{{$product->id_product}}"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+
                     </div>
                 </div>
             </div>

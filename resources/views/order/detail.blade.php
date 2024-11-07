@@ -21,7 +21,7 @@
                                 @if ($order->payment != 'Thanh toán khi đến cửa hàng')
                                 @foreach($listStatus as $key => $status)
                                 <a href="{{route('order.change',['id' => $order->id_order,'status' => $key])}}" class="w-100 btn btn-primary d-block {{$key > 1 ? 'mt-3': ''}} {{$key == $order->status || $key != intval($order->status) + 1 ? 'disabled' : ''}}">{{$status}}</a>
-                                @endforeach  
+                                @endforeach
                                 @else
                                 <a href="{{route('order.change',['id' => $order->id_order,'status' => 1])}}" class="w-100 btn btn-primary d-block {{$order->status + 1 == 1 ? '' : 'disabled'}}">Nhận đơn hàng</a>
                                 <a href="{{route('order.change',['id' => $order->id_order,'status' => 3])}}" class="w-100 btn btn-primary d-block mt-3 {{$order->status == 1 ? '' : 'disabled'}}">Giao thành công</a>
@@ -66,7 +66,6 @@
                                     <th>Mã đơn hàng</th>
                                     <th>Ảnh</th>
                                     <th>Tên sản phẩm</th>
-                                    <th>Màu</th>
                                     <th>Số lượng</th>
                                     <th>Giá thành</th>
                                     <th>Thành tiền</th>
@@ -75,20 +74,13 @@
                             <tbody>
                                 @foreach($details as $key => $one)
                                 @php
-                                    $discount = $one->price * $one->discount / 100;
+                                $discount = $one->price * $one->discount / 100;
                                 @endphp
                                 <tr>
                                     <td>{{$key + 1}}</td>
                                     <td>{{$one->code}}</td>
                                     <td><img src="{{ asset($one->image) }}" alt="" width="150" height="100"></td>
                                     <td>{{$one->name}}</td>
-                                    <td>
-                                        @foreach ($colors as $color)
-                                            @if ($color->id_color == $one->id_color)
-                                            {{$color->name}}
-                                            @endif
-                                        @endforeach
-                                    </td>
                                     <td>{{$one->quantity}}</td>
                                     <td>{{number_format($one->price,0,',','.')}}đ</td>
                                     <td>{{number_format($one->price * $one->quantity,0,',','.')}}đ</td>
@@ -114,7 +106,7 @@
             </div>
             <div class="modal-body">
                 <div class="card">
-                    <div class="card-body form-invoice">    
+                    <div class="card-body form-invoice">
                         <div class="row">
                             <div class="col-xl-7">
                                 <ul class="list-unstyled float-start">
@@ -127,9 +119,9 @@
                             <div class="col-xl-5">
                                 <ul class="list-unstyled float-end">
                                     <li style="font-size: 25px; color: red;">Cửa hàng</li>
-                                    <li>Thành phố Thái Nguyên</li>
+                                    <li>Thành phố Hà Nội</li>
                                     <li>(+84) 985 104 987</li>
-                                    <li>quan@gmail.com</li>
+                                    <li>tam@gmail.com</li>
                                 </ul>
                             </div>
                         </div>
@@ -138,7 +130,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Tên mặt hàng</th>
-                                    <th scope="col" class="text-center">Màu sắc</th>
                                     <th scope="col" class="text-center">Số lượng</th>
                                     <th scope="col" class="text-center">Đơn giá</th>
                                     <th scope="col" class="text-center">Giá thành</th>
@@ -148,13 +139,6 @@
                                 @foreach($details as $one)
                                 <tr>
                                     <td>{{$one->name}}</td>
-                                    <td class="text-center">
-                                        @foreach ($colors as $color)
-                                            @if ($color->id_color == $one->id_color)
-                                            {{$color->name}}
-                                            @endif
-                                        @endforeach
-                                    </td>
                                     <td class="text-center">x{{$one->quantity}}</td>
                                     <td class="text-center">{{number_format($one->price,0,',','.')}} đ</td>
                                     <td class="text-center">{{number_format($one->price * $one->quantity,0,',','.')}} đ</td>
