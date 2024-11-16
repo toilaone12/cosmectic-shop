@@ -116,7 +116,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         Phần quảng cáo
     </div>
 
@@ -134,8 +134,8 @@
                 <a class="collapse-item" href="{{route('banner.formInsert')}}">Thêm</a>
             </div>
         </div>
-    </li>
-    <hr class="sidebar-divider">
+    </li> --}}
+    {{-- <hr class="sidebar-divider"> --}}
 
 
     <!-- Heading -->

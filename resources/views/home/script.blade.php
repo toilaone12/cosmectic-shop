@@ -70,67 +70,61 @@
             e.preventDefault();
             let id = $(this).attr('data-id');
             let url = "{{route('cart.add')}}";
-            postAjax(url, {
-                    id: id,
-                },
-                function(data) {
-                    if (data.res == 'success') {
-                        formCart(data)
-                        notyf.success({
-                            message: data.text
-                        });
-                    } else {
-                        notyf.error({
-                            message: data.text
-                        });
+            let idCustomer = $('.fullname-login').attr('data-id');
+            if(idCustomer) {
+                postAjax(url, {
+                        id: id,
+                    },
+                    function(data) {
+                        if (data.res == 'success') {
+                            formCart(data)
+                            notyf.success({
+                                message: data.text
+                            });
+                        } else {
+                            notyf.error({
+                                message: data.text
+                            });
+                        }
+                    },
+                    function(err) {
+                        location.href = "{{route('home.login')}}"
                     }
-                },
-                function(err) {
-                    notyf.error({
-                        message: err
-                    });
-                }
-            )
+                )
+            } else {
+                location.href = "{{route('home.login')}}"
+            }
         })
         //them nhanh gio hang
         $(document).on('click', '.add-cart', function(e) {
             e.preventDefault();
             let id = $(this).attr('data-id');
             let url = "{{route('cart.add')}}";
-            let color = $(this).attr('data-color');
             let idCustomer = $('.fullname-login').attr('data-id');
-            if (color) {
-                if (idCustomer) {
-                    postAjax(url, {
-                            id: id,
-                            color: color
-                        },
-                        function(data) {
-                            if (data.res == 'success') {
-                                formCart(data)
-                                notyf.success({
-                                    message: data.text
-                                });
-                            } else {
-                                notyf.error({
-                                    message: data.text
-                                });
-                            }
-                        },
-                        function(err) {
+            if (idCustomer) {
+                postAjax(url, {
+                        id: id,
+                        color: color
+                    },
+                    function(data) {
+                        if (data.res == 'success') {
+                            formCart(data)
+                            notyf.success({
+                                message: data.text
+                            });
+                        } else {
                             notyf.error({
-                                message: err
+                                message: data.text
                             });
                         }
-                    )
-                } else {
-                    $('#modal_all_box').modal('hide');
-                    location.href = "{{route('home.login')}}"
-                }
+                    },
+                    function(err) {
+                        location.href = "{{route('home.login')}}"
+                    }
+                )
             } else {
-                notyf.error({
-                    message: 'Yêu cầu chọn màu sắc cho sản phẩm'
-                });
+                $('#modal_all_box').modal('hide');
+                location.href = "{{route('home.login')}}"
             }
         })
         //them gio hang trong chi tiet
@@ -154,9 +148,7 @@
                         }
                     },
                     function(err) {
-                        notyf.error({
-                            message: err
-                        });
+                        location.href = "{{route('home.login')}}"
                     }, 'json', 1)
             } else {
                 location.href = "{{route('home.login')}}"

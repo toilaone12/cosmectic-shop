@@ -74,7 +74,7 @@
 
     // Product imgs Slick
     $('#product-imgs').slick({
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         arrows: true,
         centerMode: true,

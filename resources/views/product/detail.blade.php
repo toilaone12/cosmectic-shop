@@ -22,7 +22,7 @@
             <!-- /Product main img -->
 
             <!-- Product thumb imgs -->
-            <div class="col-md-2  col-md-pull-5">
+            <div class="col-md-2 col-md-pull-5">
                 <div id="product-imgs">
                     @php
                     $thumbnails = explode('|',trim($product->thumbnail_path,'|'));
